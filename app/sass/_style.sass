@@ -1,0 +1,193 @@
+body
+  font-family: $fontFamily1
+  color: $textColor1
+
+.link
+  @include transition(color, .3s)
+  &:focus,
+  &:hover,
+  &:active
+    color: $textColor2
+
+.btn
+  @include transition(box-shadow, .3s)
+  border-radius: 0
+  &:hover,
+  &:focus,
+  &:active
+    color: $textColor2
+    box-shadow: 2px 2px 5px 0px rgba($textColor1, .75)
+  &:active:focus
+    box-shadow: 1px 1px 3px 0px rgba($textColor1, .75)
+
+.whole-slider
+  &__inner
+    padding: 30px
+  &__item
+    height: calc(100vh - 60px)
+    position: absolute
+    left: 0px
+    top: 0px
+    width: 100%
+    height: 100%
+    opacity: 0
+    z-index: 1
+    transition: opacity 1s
+  &__media
+    position: absolute
+    left: 0px
+    top: 0px
+    height: 100%
+    width: 60%
+    @include transition(width)
+  &__img
+    position: absolute
+    height: 100%
+    width: 100%
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+  &__part
+    @include transition(width)
+    height: calc(100vh - 60px)
+    position: relative
+    width: 100%
+  &__list
+    position: relative
+    height: 300px
+    padding: 0px
+    margin: 0px
+    list-style-type: none
+
+.whole-description
+  position: relative
+  padding-left: 60%
+  &__title
+    position: relative
+    text-transform: uppercase
+    color: $textColor1
+    font-weight: $fontWeightRegular
+    font-size: 40px
+    line-height: 58px
+    width: 371px
+    letter-spacing: 7px
+    word-spacing: 3px
+    padding: 118px 0 17px 0
+    left: -88px
+  &__inner
+    padding-left: 32px
+    width: calc(100% - 50px)
+  &__expand
+    position: relative
+    font-size: 0
+    width: 47px
+    height: 47px
+    background-color: $elementColor1
+  &__btn
+    position: absolute
+    width: 100%
+    height: 100%
+    border: none
+    background: transparent
+    font-size: 0
+    &:after
+      width: 27px
+      height: 3px
+      background-color: $elementColor2
+      @include pseudo
+      @include center
+      @include transition()
+    &:before
+      width: 3px
+      height: 27px
+      background-color: $elementColor2
+      @include pseudo
+      @include center
+      @include transition()
+  &__text
+    padding: 33px 0 30px 0
+    font-weight: $fontWeightMedium
+    word-spacing: -1px
+    font-size: 16px
+  &__link
+    text-transform: uppercase
+    font-weight: $fontWeightMedium
+    word-spacing: 4px
+    position: relative
+    display: inline-block
+    &:after
+      width: 46px
+      height: 5px
+      bottom: -20px
+      left: 0
+      background-color: $elementColor1
+      @include pseudo()
+
+.products
+  position: absolute
+  right: -30px
+  top: -30px
+  height: 100vh
+  background-color: $elementColor1
+  width: 204px
+  padding: 13px
+  color: $textColor3
+  overflow: auto
+  opacity: 0
+  @include transition(transform)
+  &-slider
+    &__list
+      position: relative
+    &__item
+      width: 100%
+      height: 248px
+      background-color: $elementColor1
+      opacity: 0
+    &__img
+      background-size: contain
+      background-repeat: no-repeat
+      background-position: center
+      background-image: url("../img/products/item1.jpg")
+      background-color: $elementColor2
+      width: 100%
+      height: 178px
+    &__name
+      text-transform: uppercase
+      font-size: 11px
+      padding-top: 12px
+      @include truncate
+    &__price
+      font-size: 10px
+      padding-top: 9px
+
+//closed styles
+.closed
+  .products
+    z-index: -1
+    @include movingAnimation(moveLeft)
+    &-slider__item
+      @include itemOneByOne()
+
+//expanded styles
+.expanded
+  .products
+    @include movingAnimation
+    &-slider__item
+      @include itemOneByOne(appearingItems)
+  .whole-description__btn
+    &:before,
+    &:after
+      @include rotate()
+  .whole-slider__part
+    width: calc(100% - 250px)
+
+.showing
+  opacity: 1
+  z-index: 2
+
+
+
+
+
+
+

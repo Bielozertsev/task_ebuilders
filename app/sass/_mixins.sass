@@ -1,0 +1,39 @@
+@mixin pseudo($display: block, $position: absolute, $content: '')
+  content: $content
+  display: $display
+  position: $position
+
+@mixin center()
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+@mixin rotate()
+  transform: translate(-50%, -50%) rotate(45deg)
+
+@mixin transition($property: all, $time: .5s )
+  transition: $property $time cubic-bezier(0.455, 0.03, 0.515, 0.955)
+
+@mixin truncate($truncation-boundary: 100%)
+  max-width: $truncation-boundary
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+@mixin itemOneByOne($animation: hidingItems)
+  animation-name: $animation
+  animation-duration: 350ms
+  animation-delay: calc(var(--place) * 150ms)
+  animation-fill-mode: both
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955)
+
+@mixin movingAnimation($animation: moveRight)
+  animation-name: $animation
+  animation-duration: 700ms
+  animation-fill-mode: both
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955)
+
+
+
+
+
